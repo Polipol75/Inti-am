@@ -10,7 +10,12 @@ public class Player : MonoBehaviour
 
     private float move;
 
-    public float jumForce = 4;
+    public float jumpForce = 7f;           // fuerza inicial del salto
+
+    // Variables para salto tipo Hollow Knight
+    public float fallMultiplier = 2.5f;    // cae más rápido
+    public float lowJumpMultiplier = 2f;   // salto corto si se suelta el botón
+
     private bool isGrounded;
     public Transform groundCheck;
     public float groundRadious = 0.1f;
@@ -46,14 +51,28 @@ public class Player : MonoBehaviour
         if (move != 0)
             transform.localScale = new Vector3(math.sign(move), 1, 1);
 
+        // --- SALTO VARIABLE TIPO HOLLOW KNIGHT ---
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, jumForce);
+            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, jumpForce);
+        }
+
+        // Saltos variables con gravedad modificada
+        if (rb2D.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            // Si sube pero el botón ya no está presionado, hace un salto corto
+            rb2D.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb2D.linearVelocity.y < 0)
+        {
+            // Si está cayendo, cae más rápido
+            rb2D.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
 
         animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetFloat("VerticalVelocity", rb2D.linearVelocity.y);
         animator.SetBool("IsGrounded", isGrounded);
+
         // Registrar datos cada 0.1 segundos
         recordTimer += Time.deltaTime;
         if (recordTimer >= recordInterval)
