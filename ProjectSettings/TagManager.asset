@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - floor
   - Floor
   layers:
   - Default

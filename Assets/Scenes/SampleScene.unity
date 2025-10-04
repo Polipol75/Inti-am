@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &216992382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6578578915000198898, guid: 36f970e90531b62419fe821127025b94, type: 3}
+  m_PrefabInstance: {fileID: 1101958956318224275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &274027800
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +544,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2756,8 +2761,8 @@ Tilemap:
     m_Data: {fileID: 7988907048659085410, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
   - m_RefCount: 112
     m_Data: {fileID: 149611087, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1543324697, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 28
     m_Data: {fileID: 5463916, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
   - m_RefCount: 1
@@ -2784,8 +2789,8 @@ Tilemap:
     m_Data: {fileID: -2097793594, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 305191843, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1543324697, guid: bf0aae2ba104d3346a43ef2c0b0dce89, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 218
     m_Data:
@@ -3025,7 +3030,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258384954}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3102,10 +3107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde99c669ec591645a28d23311ed8f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JefeTigre
-  playerTarget: {fileID: 7878350319419244052}
-  velocidadPersecucion: 1
-  tiempoInicioPersecucion: 2
-  rangoAtaque: 0.7
+  animator: {fileID: 1258384955}
+  speed_walk: 1
+  target: {fileID: 216992382}
+  detectionRange: 10
 --- !u!1001 &1101958956318224275
 PrefabInstance:
   m_ObjectHideFlags: 0
