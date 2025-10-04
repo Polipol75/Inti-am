@@ -21,7 +21,7 @@ public class jefeCaminar : StateMachineBehaviour
             if (jefe.EstaCercaDelJugador())
             {
                 // ESTA ES LA LÍNEA QUE NECESITA QUE EL TRIGGER EXISTA EN UNITY
-                animator.SetTrigger("JefeAtaque");
+                animator.SetTrigger("Ataque");
             }
             // NOTA: No es necesario llamar a jefe.PerseguirJugador() aquí, 
             // ya que está en el Update del JefeTigre.cs

@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public float groundRadious = 0.1f;
     public LayerMask groundLayer;
 
+    private Animator animator;
+
     // Lista para registrar los movimientos
     public List<PlayerMovementData> movementDataList = new List<PlayerMovementData>();
 
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         // Imprimir encabezado de tabla
         Debug.Log("Time      | PosX     | PosY     | Direction");
@@ -48,6 +51,9 @@ public class Player : MonoBehaviour
             rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, jumForce);
         }
 
+        animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetFloat("VerticalVelocity", rb2D.linearVelocity.y);
+        animator.SetBool("IsGrounded", isGrounded);
         // Registrar datos cada 0.1 segundos
         recordTimer += Time.deltaTime;
         if (recordTimer >= recordInterval)
