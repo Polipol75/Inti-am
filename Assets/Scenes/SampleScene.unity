@@ -3016,7 +3016,7 @@ Transform:
   m_GameObject: {fileID: 1258384954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.126, y: -0.229, z: -0.54}
+  m_LocalPosition: {x: 1.126, y: -0.089, z: -0.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3104,13 +3104,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258384954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bde99c669ec591645a28d23311ed8f14, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bc60a693f53ca6418a4f549163c5bb1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JefeTigre
+  m_EditorClassIdentifier: Assembly-CSharp::JefeTigre_QLearning_Animacion
   animator: {fileID: 1258384955}
-  speed_walk: 1
+  speed_walk: 3
   target: {fileID: 216992382}
   detectionRange: 10
+  attackRange: 2
+  longRangeAttackThreshold: 5
+  learningRate: 0.1
+  discountFactor: 0.9
+  explorationRate: 0.2
+  explorationDecay: 0.999
+  minExplorationRate: 0.01
+  reward_MovementTowardsPlayer: 0.01
+  reward_AttackAttempt: -0.05
+  reward_Idle: -0.01
+  reward_BossCollidesWithPlayer: 0.1
+  reward_AttackHitPlayer_ShortRange: 1
+  reward_AttackHitPlayer_LongRange: 1
+  reward_AttackMissPlayer: -0.5
+  attackCooldownTime: 1.5
+  timeBetweenAttack1Repeats: 0.5
 --- !u!1001 &1101958956318224275
 PrefabInstance:
   m_ObjectHideFlags: 0
