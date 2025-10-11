@@ -5,8 +5,9 @@ public class EnemyShooter : MonoBehaviour
     [Header("Disparo")]
     public GameObject projectilePrefab;
     public Transform firePoint;
-    public float shootForce = 10f;
     public float shootInterval = 2f;
+    [Tooltip("Altura relativa máxima del arco")]
+    public float maxArcHeight = 2f; // puedes ajustar para que la parabola sea más plana o más alta
 
     [Header("Referencia al jugador")]
     private Transform player;
@@ -15,7 +16,6 @@ public class EnemyShooter : MonoBehaviour
 
     void Start()
     {
-        // Busca el jugador por tag (aseg�rate que tenga el tag "Player")
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
@@ -39,44 +39,36 @@ public class EnemyShooter : MonoBehaviour
         if (projectilePrefab == null || firePoint == null || player == null)
             return;
 
-        // Guardar posici�n del jugador en el momento del disparo
-        Vector2 targetPosition = player.position;
-        Vector2 startPosition = firePoint.position;
+        Vector2 start = firePoint.position;
+        Vector2 end = player.position;
+        Vector2 distance = end - start;
 
-        // Diferencia entre posiciones
-        Vector2 distance = targetPosition - startPosition;
+        float gravity = Mathf.Abs(Physics2D.gravity.y);
 
-        // Par�metros f�sicos
-        float gravity = Mathf.Abs(Physics2D.gravity.y); // gravedad del mundo 2D
-        float height = distance.y;
-        distance.y = 0;
+        // 🔹 Altura máxima de la parabola
+        float arcHeight = Mathf.Min(maxArcHeight, distance.magnitude / 2f);
 
-        // Puedes ajustar esto para cambiar la "altura m�xima" del arco
-        float heightBoost = 2f;
+        // Velocidad inicial vertical para alcanzar la altura máxima
+        float velocityY = Mathf.Sqrt(2 * gravity * arcHeight);
 
-        // Calcular velocidad inicial en Y para alcanzar la altura
-        float velocityY = Mathf.Sqrt(2 * gravity * heightBoost);
-
-        // Tiempo de subida + bajada
+        // Tiempo para subir y bajar
         float timeUp = velocityY / gravity;
-        float totalHeight = heightBoost + Mathf.Max(0, height);
+        float totalHeight = arcHeight + Mathf.Max(0, distance.y);
         float timeDown = Mathf.Sqrt(2 * totalHeight / gravity);
         float totalTime = timeUp + timeDown;
 
         // Velocidad horizontal necesaria
         float velocityX = distance.x / totalTime;
 
-        // Crear proyectil
-        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        // Instanciar proyectil
+        GameObject proj = Instantiate(projectilePrefab, start, Quaternion.identity);
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
-
         if (rb != null)
         {
-            // Aplicar velocidad calculada
-            Vector2 velocity = new Vector2(velocityX, velocityY);
-            rb.linearVelocity = velocity;
+            rb.linearVelocity = new Vector2(velocityX, velocityY);
         }
+
+        // Alinear visualmente el proyectil hacia el jugador
+        proj.transform.right = (end - start).normalized;
     }
-
-
 }
