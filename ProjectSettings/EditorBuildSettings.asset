@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/menu.unity
+    guid: ac7c6c3593aaf4c408277f6b2b0b0319
+  - enabled: 1
     path: Assets/Scenes/Centro_Artesanal.unity
     guid: 234d0c0bc899c1447ace768f51ddf162
   - enabled: 1
     path: Assets/Scenes/Pelea_Vendedor.unity
     guid: c294f6b8ec4c1b64d9395816817bd63e
+  - enabled: 0
+    path: Assets/Scenes/men.unity
+    guid: c2f3dff53f66e8546a0846ef9d2804d6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

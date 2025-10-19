@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477365f0ab3ea3a4898b01f88b5b5136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  target: {fileID: 7878350319419244052}
+  target: {fileID: 0}
   offset: {x: 0.3, y: 0.3, z: 0}
 --- !u!1 &619394800
 GameObject:
@@ -3311,6 +3311,7 @@ GameObject:
   - component: {fileID: 2097250977}
   - component: {fileID: 2097250976}
   - component: {fileID: 2097250975}
+  - component: {fileID: 2097250978}
   m_Layer: 0
   m_Name: EnemyShooter
   m_TagString: Untagged
@@ -3437,91 +3438,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!1001 &1101958956318224275
-PrefabInstance:
+--- !u!114 &2097250978
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3262164760756106922, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3f5ee43008006ac4e9c72b7f4a7a8102, type: 2}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.438
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477775668563331075, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: jumpForce
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477775668563331075, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: lowJumpMultiplier
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6578578915000198898, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_Name
-      value: character_berie
-      objectReference: {fileID: 0}
-    - target: {fileID: 6578578915000198898, guid: 36f970e90531b62419fe821127025b94, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 36f970e90531b62419fe821127025b94, type: 3}
---- !u!4 &7878350319419244052 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4857897529417220889, guid: 36f970e90531b62419fe821127025b94, type: 3}
-  m_PrefabInstance: {fileID: 1101958956318224275}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097250972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910f20b098dfbe149b287103c3196da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Vida
+  maxHealth: 50
+  damagePerHit: 5
+  invulnerabilityTime: 0.2
+  flashTimes: 3
+  flashInterval: 0.06
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 1101958956318224275}
   - {fileID: 2097250973}
   - {fileID: 274027802}
   - {fileID: 1252018645}
